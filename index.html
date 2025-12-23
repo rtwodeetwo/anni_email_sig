@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPPL Email Signature Generator</title>
+    <!-- Google Fonts: Montserrat for headers, Roboto Condensed for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>PPPL Email Signature Generator</h1>
+            <p class="subtitle">75th Anniversary Edition</p>
+        </div>
+    </header>
+
+    <!-- Instructions (Full Width) -->
+    <div class="instructions-wrapper">
+        <div class="instructions">
+            <h3>How to Use</h3>
+            <ol>
+                <li>Fill in your information in the form.</li>
+                <li>Preview your signature on the right.</li>
+                <li>Click "Copy Signature to Clipboard"</li>
+                <li>Open Gmail, click on Settings (the cog on the upper right).</li>
+                <li>Select "See all settings" at the top of the menu.</li>
+                <li>Scroll down the page to find the Signature section of the Settings.</li>
+                <li>Delete your existing signature and press paste (Windows: CTRL + V; Mac: CMD + V) to add your updated signature.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container main-content">
+        <!-- Left Column: Form -->
+        <section class="form-section">
+            <h2>Your Information</h2>
+            <form id="signature-form">
+                <!-- Name (Required) -->
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required
+                           placeholder="Dr. Jane Smith">
+                </div>
+
+                <!-- Job Title (Required) -->
+                <div class="form-group">
+                    <label for="title">Job Title <span class="required">*</span></label>
+                    <input type="text" id="title" name="title" required
+                           placeholder="Principal Research Physicist">
+                </div>
+
+                <!-- Organization (Hardcoded, Disabled) -->
+                <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" id="organization" name="organization"
+                           value="Princeton Plasma Physics Laboratory" disabled>
+                </div>
+
+                <!-- Cell Phone (Optional) -->
+                <div class="form-group">
+                    <label for="cell">Cell Phone</label>
+                    <input type="tel" id="cell" name="cell"
+                           placeholder="(609) 555-1234">
+                </div>
+
+                <!-- Office Phone (Optional) -->
+                <div class="form-group">
+                    <label for="office">Office Phone</label>
+                    <input type="tel" id="office" name="office"
+                           placeholder="(609) 243-2000">
+                </div>
+
+                <!-- Email (Optional) -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"
+                           placeholder="jsmith@pppl.gov">
+                </div>
+
+                <!-- Website (Optional) -->
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input type="url" id="website" name="website"
+                           placeholder="https://www.pppl.gov">
+                </div>
+
+                <!-- Other (Optional) -->
+                <div class="form-group">
+                    <label for="other">Other <span class="hint">(quote, Calendly, etc.)</span></label>
+                    <textarea id="other" name="other" rows="2"
+                              placeholder="Schedule a meeting: calendly.com/jsmith"></textarea>
+                </div>
+            </form>
+        </section>
+
+        <!-- Right Column: Preview & Copy -->
+        <section class="preview-section">
+            <h2>Preview</h2>
+            <div class="preview-container">
+                <div id="signature-preview">
+                    <!-- Live signature preview renders here -->
+                </div>
+            </div>
+            <button type="button" id="copy-btn" class="copy-button">
+                Copy Signature to Clipboard
+            </button>
+            <p id="copy-status" class="copy-status"></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="container">
+            <p>Princeton Plasma Physics Laboratory &mdash; 75 Years of Discovery</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
