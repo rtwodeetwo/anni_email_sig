@@ -41,15 +41,19 @@
     <div class="instructions-wrapper">
         <div class="instructions">
             <h3>How to Use</h3>
-            <ol>
-                <li>Fill in your information in the form.</li>
-                <li>Preview your signature and adjust as necessary.</li>
-                <li>Click "Copy Signature to Clipboard"</li>
-                <li>Open Gmail, click on Settings (the cog on the upper right).</li>
-                <li>Select "See all settings" at the top of the menu.</li>
-                <li>Scroll down the page to find the Signature section of the Settings.</li>
-                <li>Delete your existing signature and press paste (Windows: CTRL + V; Mac: CMD + V) to add your updated signature.</li>
-            </ol>
+            <div class="instructions-columns">
+                <ol>
+                    <li>Fill in your information in the form.</li>
+                    <li>Preview your signature and adjust as necessary.</li>
+                    <li>Click "Copy Signature to Clipboard"</li>
+                    <li>Open Gmail, click on Settings (the cog on the upper right).</li>
+                </ol>
+                <ol start="5">
+                    <li>Select "See all settings" at the top of the menu.</li>
+                    <li>Scroll down the page to find the Signature section.</li>
+                    <li>Delete your existing signature and paste (Windows: CTRL + V; Mac: CMD + V).</li>
+                </ol>
+            </div>
         </div>
     </div>
 
@@ -57,8 +61,7 @@
     <main class="container main-content">
         <!-- Left Column: Form -->
         <section class="form-section">
-            <h2>Your Information</h2>
-            <p class="required-note"><span class="required">*</span> Required fields</p>
+            <h2>Your Information <span class="required-note"><span class="required">*</span> Required</span></h2>
             <form id="signature-form">
                 <!-- Name (Required) -->
                 <div class="form-group">

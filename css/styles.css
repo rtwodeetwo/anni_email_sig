@@ -208,8 +208,9 @@ body {
 
 .required-note {
     font-size: 0.875rem;
+    font-weight: 400;
     color: var(--grey-2);
-    margin-bottom: var(--spacing-md);
+    margin-left: 0.5rem;
 }
 
 .required-note .required {
@@ -330,15 +331,28 @@ body {
     margin-bottom: var(--spacing-sm);
 }
 
+.instructions-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
 .instructions ol {
     margin-left: var(--spacing-lg);
-    font-size: 1.05rem;
-    line-height: 1.3;
+    font-size: 0.95rem;
+    line-height: 1.4;
     color: var(--grey-2);
 }
 
 .instructions li {
     margin-bottom: 0.25rem;
+}
+
+@media (max-width: 700px) {
+    .instructions-columns {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
 }
 
 /* ================================
