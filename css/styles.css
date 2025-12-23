@@ -29,6 +29,118 @@
 }
 
 /* ================================
+   Login Screen
+   ================================ */
+.login-screen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--grey-1) 0%, #2c3e50 100%);
+}
+
+.login-container {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.login-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: var(--spacing-md);
+}
+
+.login-container h1 {
+    font-family: var(--font-header);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--grey-1);
+    margin-bottom: 0.25rem;
+}
+
+.login-subtitle {
+    font-family: var(--font-header);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--orange);
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-info {
+    font-size: 0.9rem;
+    color: var(--grey-2);
+    margin-bottom: var(--spacing-lg);
+}
+
+.google-signin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+    background: var(--white);
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.google-signin-btn:hover {
+    background: #f8f9fa;
+    border-color: #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.google-icon {
+    flex-shrink: 0;
+}
+
+.login-error {
+    color: var(--magenta);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-md);
+    min-height: 1.5em;
+}
+
+/* User Bar */
+.user-bar {
+    background: var(--grey-1);
+    color: var(--white);
+    padding: 8px var(--spacing-md);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.signout-btn {
+    padding: 6px 12px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--white);
+    background: transparent;
+    border: 1px solid var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.signout-btn:hover {
+    background: var(--white);
+    color: var(--grey-1);
+}
+
+/* ================================
    Base Styles
    ================================ */
 * {
@@ -57,21 +169,21 @@ body {
 .page-header {
     background-color: var(--grey-1);
     color: var(--white);
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-md) 0;
     text-align: center;
 }
 
 .page-header h1 {
     font-family: var(--font-header);
     font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-sm);
+    font-size: 1.75rem;
+    margin-bottom: 0.25rem;
 }
 
 .page-header .subtitle {
     font-family: var(--font-header);
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: var(--orange);
 }
 
@@ -253,9 +365,157 @@ body {
    Footer
    ================================ */
 .page-footer {
-    background-color: var(--grey-1);
-    color: var(--grey-3);
-    text-align: center;
-    padding: var(--spacing-lg) 0;
     margin-top: var(--spacing-xl);
+}
+
+.footer-main {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.footer-col p {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+.footer-italic {
+    font-style: italic;
+    color: #ccc;
+}
+
+.footer-center h3 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0 0 0.5rem 0;
+}
+
+.footer-col a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-col a:hover {
+    text-decoration: underline;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.mailing-list-btn {
+    display: inline-block;
+    background-color: var(--orange);
+    color: #fff !important;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 3px;
+    margin: 0.5rem 0 1rem 0;
+    text-decoration: none !important;
+}
+
+.mailing-list-btn:hover {
+    background-color: #e07020;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #555;
+    color: #fff;
+    transition: background-color 0.2s;
+}
+
+.social-icons a:hover {
+    background-color: var(--orange);
+}
+
+.social-icons svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+    background-color: #222;
+    padding: 1rem 0;
+}
+
+.footer-bottom .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #aaa;
+    text-align: center;
+}
+
+.footer-bottom a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.doe-logo {
+    height: 40px;
+}
+
+.princeton-logo {
+    height: 45px;
+}
+
+/* Footer Responsive */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .footer-bottom .footer-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
