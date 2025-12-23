@@ -40,11 +40,28 @@ function showLoginScreen() {
     appContent.style.display = 'none';
 }
 
-// Show app content
+// Show app content and populate form fields
 function showAppContent(user) {
     loginScreen.style.display = 'none';
     appContent.style.display = 'block';
     userEmailSpan.textContent = user.email;
+
+    // Auto-populate form fields from Google profile
+    const nameField = document.getElementById('name');
+    const emailField = document.getElementById('email');
+
+    if (nameField && user.displayName) {
+        nameField.value = user.displayName;
+    }
+
+    if (emailField && user.email) {
+        emailField.value = user.email;
+    }
+
+    // Trigger preview update if the function exists
+    if (typeof updatePreview === 'function') {
+        updatePreview();
+    }
 }
 
 // Handle sign in
