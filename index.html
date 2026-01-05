@@ -77,6 +77,13 @@
                            placeholder="Principal Research Physicist">
                 </div>
 
+                <!-- Pronouns (Optional) -->
+                <div class="form-group">
+                    <label for="pronouns">Pronouns</label>
+                    <input type="text" id="pronouns" name="pronouns"
+                           placeholder="she/her">
+                </div>
+
                 <!-- Organization (Hardcoded, Disabled) -->
                 <div class="form-group">
                     <label for="organization">Organization</label>
@@ -123,7 +130,7 @@
 
         <!-- Right Column: Preview & Copy -->
         <section class="preview-section">
-            <h2>Preview</h2>
+            <h2>Email Signature Preview</h2>
             <div class="preview-container">
                 <div id="signature-preview">
                     <!-- Live signature preview renders here -->
@@ -135,6 +142,20 @@
             <p id="copy-status" class="copy-status"></p>
         </section>
     </main>
+
+    <!-- Zoom Background Section (Full Width) -->
+    <section class="zoom-section">
+        <div class="container">
+            <h2>Zoom Background</h2>
+            <div class="zoom-preview-container">
+                <canvas id="zoom-canvas" width="1920" height="1080"></canvas>
+            </div>
+            <button type="button" id="download-zoom-btn" class="copy-button">
+                Download Zoom Background
+            </button>
+            <p id="zoom-status" class="copy-status"></p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="page-footer">

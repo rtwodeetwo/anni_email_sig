@@ -5,6 +5,10 @@ let formElements;
 let previewElement;
 let copyButton;
 let copyStatus;
+let zoomCanvas;
+let zoomDownloadButton;
+let zoomStatus;
+let zoomBackgroundImage;
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', init);
@@ -14,6 +18,7 @@ function init() {
     formElements = {
         name: document.getElementById('name'),
         title: document.getElementById('title'),
+        pronouns: document.getElementById('pronouns'),
         cell: document.getElementById('cell'),
         office: document.getElementById('office'),
         email: document.getElementById('email'),
@@ -25,6 +30,18 @@ function init() {
     copyButton = document.getElementById('copy-btn');
     copyStatus = document.getElementById('copy-status');
 
+    zoomCanvas = document.getElementById('zoom-canvas');
+    zoomDownloadButton = document.getElementById('download-zoom-btn');
+    zoomStatus = document.getElementById('zoom-status');
+
+    // Load Zoom background image
+    zoomBackgroundImage = new Image();
+    zoomBackgroundImage.crossOrigin = 'anonymous';
+    zoomBackgroundImage.src = 'images/75th_anniversary-Zoom_bg-2.jpg';
+    zoomBackgroundImage.onload = () => {
+        updateZoomBackground();
+    };
+
     // Attach event listeners
     attachEventListeners();
 
@@ -35,11 +52,17 @@ function init() {
 function attachEventListeners() {
     // Listen for input changes on all form fields
     Object.values(formElements).forEach(element => {
-        element.addEventListener('input', debounce(updatePreview, 150));
+        element.addEventListener('input', debounce(() => {
+            updatePreview();
+            updateZoomBackground();
+        }, 150));
     });
 
     // Copy button click
     copyButton.addEventListener('click', copySignature);
+
+    // Zoom download button click
+    zoomDownloadButton.addEventListener('click', downloadZoomBackground);
 }
 
 // Debounce utility to prevent excessive updates
@@ -79,29 +102,29 @@ function generateSignatureHTML(data) {
     let contactLines = '';
 
     if (data.cell) {
-        contactLines += `<tr><td style="font-family: Arial, sans-serif; font-size: 13px; color: #405965; padding: 2px 0;">Cell: ${escapeHTML(data.cell)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 13px; color: #405965; padding: 2px 0;">Cell: ${escapeHTML(data.cell)}</td></tr>`;
     }
 
     if (data.office) {
-        contactLines += `<tr><td style="font-family: Arial, sans-serif; font-size: 13px; color: #405965; padding: 2px 0;">Office: ${escapeHTML(data.office)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 13px; color: #405965; padding: 2px 0;">Office: ${escapeHTML(data.office)}</td></tr>`;
     }
 
     if (data.email) {
-        contactLines += `<tr><td style="font-family: Arial, sans-serif; font-size: 13px; color: #405965; padding: 2px 0;"><a href="mailto:${escapeHTML(data.email)}" style="color: #c12d63; text-decoration: none;">${escapeHTML(data.email)}</a></td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 13px; color: #405965; padding: 2px 0;"><a href="mailto:${escapeHTML(data.email)}" style="color: #c12d63; text-decoration: none;">${escapeHTML(data.email)}</a></td></tr>`;
     }
 
     if (data.website) {
         const websiteURL = data.website.startsWith('http') ? data.website : `https://${data.website}`;
-        contactLines += `<tr><td style="font-family: Arial, sans-serif; font-size: 13px; color: #405965; padding: 2px 0;"><a href="${escapeHTML(websiteURL)}" style="color: #c12d63; text-decoration: none;">${escapeHTML(data.website)}</a></td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 13px; color: #405965; padding: 2px 0;"><a href="${escapeHTML(websiteURL)}" style="color: #c12d63; text-decoration: none;">${escapeHTML(data.website)}</a></td></tr>`;
     }
 
     if (data.other) {
-        contactLines += `<tr><td style="font-family: Arial, sans-serif; font-size: 12px; color: #577582; padding: 8px 0 2px 0; font-style: italic;">${escapeHTML(data.other)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 12px; color: #577582; padding: 8px 0 2px 0; font-style: italic;">${escapeHTML(data.other)}</td></tr>`;
     }
 
     // Main signature template with table-based layout for email compatibility
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; font-size: 14px; line-height: 1.4;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; line-height: 1.4;">
     <tr>
         <td style="vertical-align: top; padding-right: 15px;">
             <img src="https://www.pppl.gov/sites/g/files/toruqf286/files/2025-12/75_anni_logo.png" alt="PPPL 75th Anniversary" width="70" height="73" style="display: block; border: 0;">
@@ -110,17 +133,17 @@ function generateSignatureHTML(data) {
         <td style="vertical-align: top; padding-left: 15px;">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td style="font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; color: #405965; padding-bottom: 2px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 16px; font-weight: bold; color: #405965; padding-bottom: 2px;">
                         ${escapeHTML(data.name) || '<span style="color: #999;">Your Name</span>'}
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-family: Arial, sans-serif; font-size: 14px; color: #577582; padding-bottom: 2px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #577582; padding-bottom: 2px;">
                         ${escapeHTML(data.title) || '<span style="color: #999;">Your Title</span>'}
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: #405965; padding-bottom: 8px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 13px; font-weight: bold; color: #405965; padding-bottom: 8px;">
                         ${escapeHTML(data.organization)}
                     </td>
                 </tr>
@@ -212,5 +235,111 @@ function showCopyStatus(message, type) {
     setTimeout(() => {
         copyStatus.textContent = '';
         copyStatus.className = 'copy-status';
+    }, 4000);
+}
+
+// ================================
+// Zoom Background Functions
+// ================================
+
+function updateZoomBackground() {
+    if (!zoomBackgroundImage.complete) return;
+
+    const ctx = zoomCanvas.getContext('2d');
+    const canvasWidth = zoomCanvas.width;
+    const canvasHeight = zoomCanvas.height;
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+    // Draw background image
+    ctx.drawImage(zoomBackgroundImage, 0, 0, canvasWidth, canvasHeight);
+
+    // Get name and pronouns
+    const name = formElements.name.value.trim();
+    const pronouns = formElements.pronouns.value.trim();
+
+    if (!name) return;
+
+    // Parse name into first and last
+    const nameParts = name.split(' ');
+    const firstName = nameParts[0] || '';
+    const lastName = nameParts.slice(1).join(' ') || '';
+
+    // Set text properties
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+
+    // Draw orange bar
+    const barX = 20;
+    const barY = 40;
+    const barWidth = 6;
+    const barHeight = pronouns ? 180 : 180;
+    ctx.fillStyle = '#f58025';
+    ctx.fillRect(barX, barY, barWidth, barHeight);
+
+    // Text positioning
+    const textX = barX + barWidth + 20;
+    const textY = barY;
+
+    // Load Roboto Condensed font
+    ctx.font = 'bold 90px "Roboto Condensed", sans-serif';
+
+    if (pronouns) {
+        // If pronouns provided: first+last name on line 1, pronouns on line 2
+        const fullName = name;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(fullName, textX, textY);
+
+        // Pronouns on second line
+        ctx.font = 'bold 70px "Roboto Condensed", sans-serif';
+        ctx.fillText(pronouns, textX, textY + 100);
+    } else {
+        // No pronouns: first name on line 1, last name on line 2
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(firstName, textX, textY);
+
+        if (lastName) {
+            ctx.fillText(lastName, textX, textY + 100);
+        }
+    }
+}
+
+function downloadZoomBackground() {
+    const name = formElements.name.value.trim();
+
+    if (!name) {
+        showZoomStatus('Please enter your name first', 'error');
+        return;
+    }
+
+    try {
+        // Convert canvas to blob and download
+        zoomCanvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `PPPL-75th-Zoom-Background-${name.replace(/\s+/g, '-')}.jpg`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+
+            showZoomStatus('Zoom background downloaded!', 'success');
+        }, 'image/jpeg', 0.95);
+    } catch (err) {
+        showZoomStatus('Download failed. Please try again.', 'error');
+    }
+}
+
+function showZoomStatus(message, type) {
+    zoomStatus.textContent = message;
+    zoomStatus.className = `copy-status ${type}`;
+
+    // Clear after 4 seconds
+    setTimeout(() => {
+        zoomStatus.textContent = '';
+        zoomStatus.className = 'copy-status';
     }, 4000);
 }
