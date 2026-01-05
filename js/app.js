@@ -285,7 +285,7 @@ function updateZoomBackground() {
 
     // Font sizes: first line larger, second line smaller to fit within bar
     const firstLineFontSize = 120;
-    const secondLineFontSize = 50; // Reduced to ensure it stays within bar bounds
+    const secondLineFontSize = 60;
 
     if (pronouns) {
         // If pronouns provided: first+last name on line 1, pronouns on line 2
