@@ -140,22 +140,20 @@
                 Copy Signature to Clipboard
             </button>
             <p id="copy-status" class="copy-status"></p>
+
+            <!-- Zoom Background Section (Mini) -->
+            <div class="zoom-section-mini">
+                <h3>Zoom Background Preview</h3>
+                <div class="zoom-preview-container-mini">
+                    <canvas id="zoom-canvas" width="1920" height="1080"></canvas>
+                </div>
+                <button type="button" id="download-zoom-btn" class="copy-button">
+                    Download Zoom Background
+                </button>
+                <p id="zoom-status" class="copy-status"></p>
+            </div>
         </section>
     </main>
-
-    <!-- Zoom Background Section (Full Width) -->
-    <section class="zoom-section">
-        <div class="container">
-            <h2>Zoom Background</h2>
-            <div class="zoom-preview-container">
-                <canvas id="zoom-canvas" width="1920" height="1080"></canvas>
-            </div>
-            <button type="button" id="download-zoom-btn" class="copy-button">
-                Download Zoom Background
-            </button>
-            <p id="zoom-status" class="copy-status"></p>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="page-footer">

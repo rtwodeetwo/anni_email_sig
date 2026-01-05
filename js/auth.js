@@ -62,6 +62,11 @@ function showAppContent(user) {
     if (typeof updatePreview === 'function') {
         updatePreview();
     }
+
+    // Trigger Zoom background update if the function exists
+    if (typeof updateZoomBackground === 'function') {
+        updateZoomBackground();
+    }
 }
 
 // Handle sign in
