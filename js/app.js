@@ -283,9 +283,9 @@ function updateZoomBackground() {
     const textX = barX + barWidth + 20;
     const textY = barY;
 
-    // Font sizes: first line = 2/3 of bar height, second line = 1/3
-    const firstLineFontSize = Math.floor(barHeight * 2 / 3); // 120px
-    const secondLineFontSize = Math.floor(barHeight / 3); // 60px
+    // Font sizes: first line larger, second line smaller to fit within bar
+    const firstLineFontSize = 120;
+    const secondLineFontSize = 50; // Reduced to ensure it stays within bar bounds
 
     if (pronouns) {
         // If pronouns provided: first+last name on line 1, pronouns on line 2
@@ -296,7 +296,7 @@ function updateZoomBackground() {
 
         // Pronouns on second line
         ctx.font = `bold ${secondLineFontSize}px "Roboto Condensed", sans-serif`;
-        ctx.fillText(pronouns, textX, textY + firstLineFontSize);
+        ctx.fillText(pronouns, textX, textY + firstLineFontSize + 5);
     } else {
         // No pronouns: first name on line 1, last name on line 2
         ctx.fillStyle = '#ffffff';
@@ -304,8 +304,8 @@ function updateZoomBackground() {
         ctx.fillText(firstName, textX, textY);
 
         if (lastName) {
-            ctx.font = `bold ${firstLineFontSize}px "Roboto Condensed", sans-serif`;
-            ctx.fillText(lastName, textX, textY + firstLineFontSize);
+            ctx.font = `bold ${secondLineFontSize}px "Roboto Condensed", sans-serif`;
+            ctx.fillText(lastName, textX, textY + firstLineFontSize + 5);
         }
     }
 }
