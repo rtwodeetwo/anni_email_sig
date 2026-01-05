@@ -133,9 +133,8 @@ body {
 }
 
 .container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 20px;
 }
 
 /* ================================
@@ -164,7 +163,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: var(--spacing-xl) 20px;
 }
 
 /* Responsive: Stack on mobile */
@@ -301,7 +300,7 @@ body {
    ================================ */
 .instructions-wrapper {
     width: 100%;
-    padding: var(--spacing-md) var(--spacing-md) 0;
+    padding: var(--spacing-md) 20px 0;
 }
 
 .instructions {
@@ -358,9 +357,8 @@ body {
 }
 
 .footer-container {
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 20px;
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
     gap: 2rem;
