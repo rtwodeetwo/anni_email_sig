@@ -127,7 +127,7 @@ function generateSignatureHTML(data) {
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; line-height: 1.4;">
     <tr>
         <td style="vertical-align: top; padding-right: 15px;">
-            <img src="https://www.pppl.gov/sites/g/files/toruqf286/files/styles/medium/public/2026-01/75_anni_logo.png?itok=mR-dMWfz" alt="PPPL 75th Anniversary" width="70" height="73" style="display: block; border: 0;">
+            <img src="https://www.pppl.gov/sites/g/files/toruqf286/files/styles/medium/public/2026-01/75_anni_logo.png" alt="PPPL 75th Anniversary" width="70" height="73" style="display: block; border: 0;">
         </td>
         <td style="width: 3px; background-color: #f58025; vertical-align: top;"></td>
         <td style="vertical-align: top; padding-left: 15px;">
