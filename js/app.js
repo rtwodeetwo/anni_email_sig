@@ -102,29 +102,29 @@ function generateSignatureHTML(data) {
     let contactLines = '';
 
     if (data.cell) {
-        contactLines += `<tr><td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding: 2px 0;">Cell: ${escapeHTML(data.cell)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;">Cell: ${escapeHTML(data.cell)}</td></tr>`;
     }
 
     if (data.office) {
-        contactLines += `<tr><td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding: 2px 0;">Office: ${escapeHTML(data.office)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;">Office: ${escapeHTML(data.office)}</td></tr>`;
     }
 
     if (data.email) {
-        contactLines += `<tr><td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding: 2px 0;"><a href="mailto:${escapeHTML(data.email)}" style="color: #405965; text-decoration: none;">${escapeHTML(data.email)}</a></td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;"><a href="mailto:${escapeHTML(data.email)}" style="color: #405965; text-decoration: none;">${escapeHTML(data.email)}</a></td></tr>`;
     }
 
     if (data.website) {
         const websiteURL = data.website.startsWith('http') ? data.website : `https://${data.website}`;
-        contactLines += `<tr><td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding: 2px 0;"><a href="${escapeHTML(websiteURL)}" style="color: #405965; text-decoration: none;">${escapeHTML(data.website)}</a></td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;"><a href="${escapeHTML(websiteURL)}" style="color: #405965; text-decoration: none;">${escapeHTML(data.website)}</a></td></tr>`;
     }
 
     if (data.other) {
-        contactLines += `<tr><td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding: 8px 0 2px 0;">${escapeHTML(data.other)}</td></tr>`;
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;">${escapeHTML(data.other)}</td></tr>`;
     }
 
     // Main signature template with table-based layout for email compatibility
     return `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: Roboto, sans-serif; font-size: 16px; line-height: 1.4;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; line-height: 1.4;">
     <tr>
         <td style="vertical-align: top; padding-right: 15px;">
             <img src="https://www.pppl.gov/sites/g/files/toruqf286/files/styles/medium/public/2026-01/75_anni_logo.png" alt="PPPL 75th Anniversary" width="70" height="73" style="display: block; border: 0;">
@@ -133,17 +133,17 @@ function generateSignatureHTML(data) {
         <td style="vertical-align: top; padding-left: 15px;">
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                    <td style="font-family: Roboto, sans-serif; font-size: 16px; font-weight: bold; color: #405965; padding-bottom: 2px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; font-weight: bold; color: #405965; padding: 4px 0;">
                         ${escapeHTML(data.name) || '<span style="color: #999;">Your Name</span>'}
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding-bottom: 2px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;">
                         ${escapeHTML(data.title) || '<span style="color: #999;">Your Title</span>'}
                     </td>
                 </tr>
                 <tr>
-                    <td style="font-family: Roboto, sans-serif; font-size: 16px; color: #405965; padding-bottom: 8px;">
+                    <td style="font-family: 'Roboto Condensed', sans-serif; font-size: 14px; color: #405965; padding: 4px 0;">
                         ${escapeHTML(data.organization)}
                     </td>
                 </tr>
