@@ -41,8 +41,8 @@ function init() {
     zoomBackgroundImage.onload = async () => {
         // Explicitly load Roboto Condensed fonts before rendering canvas
         try {
-            await document.fonts.load('bold 120px "Roboto Condensed"');
-            await document.fonts.load('bold 60px "Roboto Condensed"');
+            await document.fonts.load('120px "Roboto Condensed"');
+            await document.fonts.load('60px "Roboto Condensed"');
         } catch (err) {
             console.warn('Font loading failed:', err);
         }
@@ -298,20 +298,20 @@ function updateZoomBackground() {
         // If pronouns provided: first+last name on line 1, pronouns on line 2
         const fullName = name;
         ctx.fillStyle = '#ffffff';
-        ctx.font = `bold ${firstLineFontSize}px "Roboto Condensed", sans-serif`;
+        ctx.font = `${firstLineFontSize}px "Roboto Condensed", sans-serif`;
         ctx.fillText(fullName, textX, textY);
 
         // Pronouns on second line
-        ctx.font = `bold ${secondLineFontSize}px "Roboto Condensed", sans-serif`;
+        ctx.font = `${secondLineFontSize}px "Roboto Condensed", sans-serif`;
         ctx.fillText(pronouns, textX, textY + firstLineFontSize + 5);
     } else {
         // No pronouns: first name on line 1, last name on line 2
         ctx.fillStyle = '#ffffff';
-        ctx.font = `bold ${firstLineFontSize}px "Roboto Condensed", sans-serif`;
+        ctx.font = `${firstLineFontSize}px "Roboto Condensed", sans-serif`;
         ctx.fillText(firstName, textX, textY);
 
         if (lastName) {
-            ctx.font = `bold ${secondLineFontSize}px "Roboto Condensed", sans-serif`;
+            ctx.font = `${secondLineFontSize}px "Roboto Condensed", sans-serif`;
             ctx.fillText(lastName, textX, textY + firstLineFontSize + 5);
         }
     }
