@@ -34,11 +34,18 @@ function init() {
     zoomDownloadButton = document.getElementById('download-zoom-btn');
     zoomStatus = document.getElementById('zoom-status');
 
-    // Load Zoom background image
+    // Load Zoom background image and ensure fonts are loaded
     zoomBackgroundImage = new Image();
     zoomBackgroundImage.crossOrigin = 'anonymous';
     zoomBackgroundImage.src = 'images/75th_anniversary-Zoom_bg-2.jpg';
-    zoomBackgroundImage.onload = () => {
+    zoomBackgroundImage.onload = async () => {
+        // Explicitly load Roboto Condensed fonts before rendering canvas
+        try {
+            await document.fonts.load('bold 120px "Roboto Condensed"');
+            await document.fonts.load('bold 60px "Roboto Condensed"');
+        } catch (err) {
+            console.warn('Font loading failed:', err);
+        }
         updateZoomBackground();
     };
 
