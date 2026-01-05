@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "http-server -p ${PORT:-8080} -a 0.0.0.0",
     "test": "node test-webpage.js"
   },
   "repository": {
@@ -18,8 +19,10 @@
     "url": "https://github.com/rtwodeetwo/anni_email_sig/issues"
   },
   "homepage": "https://github.com/rtwodeetwo/anni_email_sig#readme",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
   "devDependencies": {
-    "http-server": "^14.1.1",
     "puppeteer": "^24.34.0"
   }
 }
