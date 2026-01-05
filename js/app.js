@@ -96,6 +96,7 @@ function getFormData() {
         name: formElements.name.value.trim(),
         title: formElements.title.value.trim(),
         organization: 'Princeton Plasma Physics Laboratory',
+        pronouns: formElements.pronouns.value.trim(),
         cell: formElements.cell.value.trim(),
         office: formElements.office.value.trim(),
         email: formElements.email.value.trim(),
@@ -114,6 +115,10 @@ function generateSignatureHTML(data) {
 
     if (data.office) {
         contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 16px; color: #405965; padding: 4px 0;">Office: ${escapeHTML(data.office)}</td></tr>`;
+    }
+
+    if (data.pronouns) {
+        contactLines += `<tr><td style="font-family: 'Roboto Condensed', sans-serif; font-size: 16px; color: #405965; padding: 4px 0;">Pronouns: ${escapeHTML(data.pronouns)}</td></tr>`;
     }
 
     if (data.email) {
